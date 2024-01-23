@@ -13,11 +13,12 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ResponseStatus
 public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
-    //get the exceptions here
+    //get the exceptions here and made the response according to exception type and return that as a response
     @ExceptionHandler(DepartmentNotFoundException.class)
-    public ResponseEntity<ErrorMessage> departmentNotFoundException(DepartmentNotFoundException exception, WebRequest webRequest){
+    public ResponseEntity<ErrorMessage>
+        departmentNotFoundException(DepartmentNotFoundException departmentNotFoundException, WebRequest webRequest){
 
-        ErrorMessage message = new ErrorMessage(HttpStatus.NOT_FOUND, exception.getMessage());
+        ErrorMessage message = new ErrorMessage(HttpStatus.NOT_FOUND, departmentNotFoundException.getMessage());
         return  ResponseEntity.status(HttpStatus.NOT_FOUND).body(message);
     }
 }
