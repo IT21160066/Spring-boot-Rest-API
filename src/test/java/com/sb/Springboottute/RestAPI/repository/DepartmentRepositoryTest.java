@@ -29,6 +29,7 @@ class DepartmentRepositoryTest {
 
         entityManager.persist(department);
     }
+    //execution completed the mock data will be deleted
 
     @Test
     public void whenFindById_thenReturnDepartment(){
